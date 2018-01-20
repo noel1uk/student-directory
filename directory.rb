@@ -21,9 +21,9 @@ def print_header
   puts "The students of Villains Academy"
   puts "-------------"
 end
-def print(students, letter)
+def print(students)
   students.each_with_index() do |student, index|
-    if student[:name][0] == letter
+    if student[:name].length < 12
       puts "#{student[:name]} (#{student[:cohort]} cohort)"
     end
   end
@@ -34,5 +34,5 @@ end
 #nothing happens until we call the methods
 students = input_students()
 print_header
-print(students, 'a')
+print(students)
 print_footer(students)
