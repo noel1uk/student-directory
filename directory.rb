@@ -1,3 +1,5 @@
+# First get the width of the screen
+require 'io/console'
 # let's put all the students into an array
 def input_students
   puts "Please enter the names of the students"
@@ -6,32 +8,24 @@ def input_students
   students = []
   # get the first name
   name = gets.chomp
-  puts "What is the students hobby"
-  hobby = gets.chomp
   # while the name is not empty, repeat this code
   while !name.empty? do
     # add the student hash to the array
-    students << {name: name, cohort: :november, hobby: hobby}
+    students << {name: name, cohort: :november}
     puts "Now we have #{students.count} students"
     # get another name from the user
-    puts "Please enter the names of the next student"
     name = gets.chomp
-    if name == ''
-      break
-    end
-    puts "What is the students hobby?"
-    hobby = gets.chomp
   end
   # return the array of students
   students
 end
 def print_header
-  puts "The students of Villains Academy"
-  puts "-------------"
+  puts "The students of Villains Academy".center(IO.console.winsize[1])
+  puts "-------------".center(IO.console.winsize[1])
 end
 def print(students)
   students.each do |student|
-    puts "#{student[:name]} (#{student[:cohort]} cohort) hobby: #{student[:hobby]}"
+    puts "#{student[:name]} (#{student[:cohort]} cohort)".center(IO.console.winsize[1])
   end
 end
 def print_footer(students)
@@ -42,4 +36,3 @@ students = input_students()
 print_header
 print(students)
 print_footer(students)
-p students
