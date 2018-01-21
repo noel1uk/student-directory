@@ -1,4 +1,4 @@
-# First get the width of the screen
+[0..-2]# First get the width of the screen
 require 'io/console'
 # Create the array of possible cohorts
 cohorts = ['January',
@@ -20,13 +20,13 @@ def input_students(cohorts)
   # create an empty array
   students = []
   # get the first name
-  name = gets.chomp
+  name = gets[0..-2]
   puts "Now enter the students cohort"
   # Check and sort user input
-  cohort = gets.chomp.downcase.capitalize
+  cohort = gets[0..-2].downcase.capitalize
   while !cohorts.include?(cohort)
     puts 'You have entered an invalid cohort name. Enter the cohorts month'
-    cohort = gets.chomp.downcase.capitalize
+    cohort = gets[0..-2].downcase.capitalize
   end
   cohort = cohort.to_sym
   # while the name is not empty, repeat this code
@@ -35,21 +35,21 @@ def input_students(cohorts)
     students << {name: name, cohort: cohort}
     if students.length < 2
       puts "\nNow we have #{students.count} student.
-            Enter the name of the next student"
+Enter the name of the next student"
     else
       puts "\nNow we have #{students.count} students.
-      Enter the name of the next student"
+Enter the name of the next student"
     end
     # get another name from the user
-    name = gets.chomp
+    name = gets[0..-2]
     if name == ''
       break
     end
     puts "Enter the students cohort"
-    cohort = gets.chomp.downcase.capitalize
+    cohort = gets[0..-2].downcase.capitalize
     while !cohorts.include?(cohort)
       puts 'You have entered an invalid cohort name. Enter the cohorts month'
-      cohort = gets.chomp.downcase.capitalize
+      cohort = gets[0..-2].downcase.capitalize
     end
     cohort = cohort.to_sym
   end
