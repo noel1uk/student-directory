@@ -33,8 +33,13 @@ def input_students(cohorts)
   while !name.empty? do
     # add the student hash to the array
     students << {name: name, cohort: cohort}
-    puts "\nNow we have #{students.count} students.
-Enter the name of the next student"
+    if students.length < 2
+      puts "\nNow we have #{students.count} student.
+            Enter the name of the next student"
+    else
+      puts "\nNow we have #{students.count} students.
+      Enter the name of the next student"
+    end
     # get another name from the user
     name = gets.chomp
     if name == ''
