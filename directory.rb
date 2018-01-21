@@ -56,16 +56,22 @@ def print_header
   puts "-------------".center(IO.console.winsize[1])
 end
 def print(students)
-  students.each do |student|
-    puts "#{student[:name]} (#{student[:cohort]} cohort)".center(IO.console.winsize[1])
+  months = students.map { |student| student[:cohort] }
+  months = months.uniq
+  months.each do |month|
+    puts "\n" + month.to_s.center(IO.console.winsize[1])
+    students.each do |key, value|
+      if month == key[:cohort]
+        puts "#{key[:name]} (#{key[:cohort]} cohort)".center(IO.console.winsize[1])
+      end
+    end
   end
 end
 def print_footer(students)
-  puts "Overall, we have #{students.count} great students"
+  puts "\nOverall, we have #{students.count} great students\n"
 end
 #nothing happens until we call the methods
 students = input_students(cohorts)
 print_header
 print(students)
 print_footer(students)
-p students
